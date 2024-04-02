@@ -2,13 +2,12 @@
 
 namespace ProyectoClase.Models
 {
-  public class Users 
+  public class User
   {
-
-    public int Id_user {get;}
-    public string Name_user {get; set;}
-    public string Lastname {get; set;}
-    public string Email {get; set;}
-    public string Created_at {get;}
+    public int IdUser {get; set;}
+    public string? NameUser {get; set;}
+    public string? LastName {get; set;}
+    public string? Email {get; set;}
+    public string? CreatedAt {get;}
   }
 }

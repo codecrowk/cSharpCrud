@@ -1,10 +1,9 @@
-CREATE TABLE Users (
-     Id_user INT AUTO_INCREMENT NOT NULL,
-   Name_user VARCHAR(45),
-    Lastname VARCHAR(45), 
-       Email VARCHAR(120),
-  Created_at TIMESTAMP,
-  PRIMARY KEY (id_user)
+UPDATE TABLE Users (
+     IdUser INT(11) AUTO_INCREMENT PRIMARY KEY,
+     NameUser VARCHAR(45),
+     LastName VARCHAR(45), 
+     Email VARCHAR(120),
+     CreatedAt TIMESTAMP,
 );
 
 

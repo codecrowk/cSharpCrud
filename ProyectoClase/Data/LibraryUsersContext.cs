@@ -12,6 +12,6 @@ namespace ProyectoClase.Data
     
     // Make reference to model
     // public DbSet<User> <ALIAS> {get; set;} 
-    public DbSet<Users> Users {get; set;}
+    public DbSet<User> Users {get; set;}
   }
 }

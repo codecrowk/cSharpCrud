@@ -17,9 +17,9 @@ namespace ProyectoClase.Controllers
     {
       _context = context;
     } 
-
     public async Task<IActionResult> Index ()
     {
+      // _context.<TABLE NAME>.ToListAsync()
       return View (await _context.Users.ToListAsync());
       // TolistAsync == select * from users
     }
