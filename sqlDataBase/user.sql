@@ -1,15 +1,15 @@
-UPDATE TABLE Users (
-     IdUser INT(11) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE Users (
+     Id INT(11) AUTO_INCREMENT PRIMARY KEY,
      NameUser VARCHAR(45),
      LastName VARCHAR(45), 
      Email VARCHAR(120),
-     CreatedAt TIMESTAMP,
+     CreatedAt TIMESTAMP
 );
 
 
 DROP TABLE Users;
 
-INSERT INTO Users (name_user, lastname, email, created_at) VALUES 
+INSERT INTO Users (`NameUser`, `LastName`, `Email`, `CreatedAt`) VALUES 
 ('John', 'Doe', 'john@example.com', CURRENT_TIMESTAMP),
 ('Jane', 'Doe', 'jane@example.com', CURRENT_TIMESTAMP),
 ('Michael', 'Smith', 'michael@example.com', CURRENT_TIMESTAMP),

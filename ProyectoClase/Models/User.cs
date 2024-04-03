@@ -4,7 +4,7 @@ namespace ProyectoClase.Models
 {
   public class User
   {
-    public int IdUser {get; set;}
+    public int Id {get; set;}
     public string? NameUser {get; set;}
     public string? LastName {get; set;}
     public string? Email {get; set;}
