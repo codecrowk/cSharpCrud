@@ -1,0 +1,42 @@
+## 1- Create a new solution with an mvc project 
+This is in Shell scripts folder
+
+## 2- Create the controler
+Do this inside your mvc project
+
+```bash
+## touch Controllers/<CONTROLLER NAME>Controller.cs 
+touch Controllers/UsersController.cs
+
+```
+
+## 3- Create a model
+
+Pay attention, only use singular in model
+
+```bash
+## touch Models/<Model NAME>.cs 
+touch Models/User.cs
+
+```
+
+## 4- Create views folder
+```bash
+mkdir Views/Users
+
+```
+
+## 5- Create basic controller structure
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+// Dont forget plural in Controllers
+// namespace <ROOT FOLDER>
+namespace Products.Mvc.Controllers
+{
+  public class UserController : Controller
+  {
+
+  }
+}
+```
