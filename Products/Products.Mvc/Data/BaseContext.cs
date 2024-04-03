@@ -1,13 +1,14 @@
+// Remember it is a connection between database and model
 using Microsoft.EntityFrameworkCore;
 
-// Reference data directory
-using Products.Mvc.Data;
+// Reference model directory
+using Products.Mvc.Models;
 
 // namespace <ROOT NAME>
 namespace Products.Mvc.Data
 {
-  // Match file name
-  public class BaseContext : DBContext
+  //Match file name
+  public class BaseContext : DbContext
   {
     /* 
     CODE EXPLAIN
@@ -18,13 +19,13 @@ namespace Products.Mvc.Data
     4- Call parent constructor (base (options))
     */
 
-    public BaseContext(DBContextOptions<BaseContext> options) : base (options)
+    public BaseContext(DbContextOptions<BaseContext> options) : base (options)
     { }
 
     // Register model
     // DBSet = set database
     // DBSet<MODEL> <ALIAS>
-    public DbSet<User> Users {get; set}
+    public DbSet<User> Users {get; set;}
 
   }
 }
