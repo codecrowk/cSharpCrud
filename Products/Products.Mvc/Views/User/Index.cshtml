@@ -1,10 +1,16 @@
-<table>
-  <tr>
-    <td>ID</td>
-    <td>Name</td>
-    <td>Lastname</td>
-    <td>Email</td>
-  </tr>
+@{
+  string[] tableHeaders = {"ID", "Name", "Lastname", "Email", "Options"};
+}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      @foreach (var header in tableHeaders)
+      {
+        <th scope="col">@header</th>
+      }
+    </tr>
+  </thead>
 
   @foreach (var user in Model)
   {
@@ -13,6 +19,11 @@
       <td>@user.Name</td>
       <td>@user.Lastname</td>
       <td>@user.Email</td>
+      <td>
+        <button type="button" class="btn btn-secondary">Details</button>
+        <button type="button" class="btn btn-primary">Update</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </td>
     </tr>
   }
 </table>
