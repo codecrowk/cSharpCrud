@@ -24,7 +24,7 @@ namespace Products.Mvc.Data
 
     // Register model
     // DBSet = set database
-    // DBSet<MODEL> <ALIAS>
+    // DBSet<MODEL> <DATABASE TABLE>
     public DbSet<User> Users {get; set;}
 
   }

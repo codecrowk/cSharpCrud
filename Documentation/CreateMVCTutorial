@@ -10,6 +10,8 @@ ModelName = "User" //$EntityName
 ControllerName = $"{EntityName}Controller" 
 DatabaseName="edfa123a8d3561"
 ```
+## Create MySql database (optional)
+First you can create a MySql database to work with.
 
 ## 1- Create a new solution with an mvc project 
 This is in Shell scripts folder
@@ -148,6 +150,18 @@ namespace Products.Mvc.Data
 }
 ```
 
+## What is DbContext class?
+DbContext class create the connection of the database between server and MySql, this is made
+with the configuration of key `ConnnectionStrings` in `appsettings.json` 
+
+```json
+// appsettings.json
+"ConnectionStrings": 
+{
+  "MySqlConnection": "server=clever-cloud.com;port=3306;database=dasd22sj42u21bd61;Uid=82jdu295foa81;password=KDndsa241As1s2"
+}
+```
+
 ## 10- Add constructor in Data BaseContext
 
 Constructor param require and object of type DBContextOptions< BaseContext >. This is use for Entity Framework to setup options in DBContext 
@@ -238,12 +252,16 @@ namespace Products.Mvc.Data
 
     // Register model
     // DBSet = set database
-    // DBSet<MODEL> <ALIAS>
+    // DBSet<MODEL> <DATABASE TABLE>
     public DbSet<User> Users {get; set;}
 
   }
 }
 ```
+
+**References**
+stackoverflow.(2012). About DbSet and DbContext 
+https://stackoverflow.com/questions/13627829/about-dbset-and-dbcontext
 
 ## 13- Create reference of databaseContext in controller
 1- Had a connection between model and databaseContext, where we convert an entity to
@@ -265,6 +283,7 @@ namespace Products.Mvc.Controllers
 
     /* This constructor reference a database, it is not using a entity, just making the
     connection */  
+    // Basecontext is automatically setup, you don't have to pass a value
     public UserController(BaseContext context)
     {
       _context = context;
@@ -281,9 +300,107 @@ A local variable is the variable you declare in a function. Its lifespan is on t
 A member variable is the variable you declare in a class definition. Its lifespan is inside that class only.
 It is Global Variable. It can be access by any function inside that same class.
 
-## Add a SQL DB
+## 14- Making the connection between model an database
+
+```cs
+using Products.Mvc.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+// Dont forget plural in Controllers
+// namespace <ROOT FOLDER>
+namespace Products.Mvc.Controllers
+{
+  public class UserController : Controller
+  {
+    // Readonly just allow to be modified inside a constructor
+    public readonly BaseContext _context;
+
+    /* This constructor reference a database, it is not using a entity, just making the
+    connection */  
+    // Basecontext is automatically setup, you don't have to pass a value
+    public UserController(BaseContext context)
+    {
+      _context = context;
+    }
+
+    public async Task<IActionResult> Index ()
+    {
+      
+      // return View(await _context.Users.ToListAsync()); == <DATABASE> <MODEL> <select *>
+      return View(await _context.Users.ToListAsync());
+      // SELECT * FROM Users
+    }
+  }
+}
+```
+
+## 15- Add MySql database provider (Pomelo)
+`dotnet add package Pomelo.EntityFrameworkCore.MySql`
+
+Your `.csproj` should look like this
+```cs
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    // Here is Pomelo installed
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+  </ItemGroup>
+
+</Project>
+```
 
 **References**
 
 Microsoft. (2024). Adding a database provider to your application </br>
 https://learn.microsoft.com/en-us/ef/core/providers/?tabs=dotnet-core-cli#adding-a-database-provider-to-your-application
+
+## 16- Register MySql as a service in Program.cs
+```cs
+using Microsoft.EntityFrameworkCore;
+using Products.Mvc.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
+// Personal service
+builder.Services.AddDbContext<BaseContext> ( options => 
+    options.UseMySql
+    (
+      // builder.Configuration.GetConnectionString("MySqlConnection"),
+      builder.Configuration.GetConnectionString("MySqlConnection"),
+      Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")
+    )
+);
+
+var app = builder.Build();
+
+// More code ...
+```
+
+**References**
+Microsoft.(2024). Program.cs 
+https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-8.0&tabs=visual-studio#programcs
+
+## 17- Add connection to appsettings.json
+This will be used for DbContext
+
+Remember that the connection key, must match with Program
+
+```json
+// appsettings.json
+"ConnectionStrings": 
+{
+  // Have to match with program (getConnectionString)
+  "MySqlConnection": "server=clever-cloud.com;port=3306;database=dasd22sj42u21bd61;Uid=82jdu295foa81;password=KDndsa241As1s2"
+}
+```
