@@ -24,17 +24,24 @@ namespace SimulacroCSharp.Mvc.Controllers
       return View(await _context.Companies.FirstOrDefaultAsync(register => register.Id == Id));
     }
 
-
+    // Modify data
     public IActionResult Create ()
     {
       return View();
     }
 
     [HttpPost]
-    public IActionResult Post (Company c)
+    public IActionResult Create (Company c)
     {
-      Console.WriteLine($"User info: {c}");
       _context.Companies.Add(c);
+      _context.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    // Delete
+    public async Task<IActionResult> Delete (int Id)
+    {
+      var user = await _context.Companies.FindAsync(Id);
+      _context.Companies.Remove(user);
       _context.SaveChanges();
       return RedirectToAction("Index");
     }
