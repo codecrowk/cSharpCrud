@@ -1,0 +1,64 @@
+@* You cannot obviate model reference *@
+@model Company
+@{
+  string[] createInfo= {"Names", "Nit", "Address", "Description", "Logo URL", "Phone", "Legal Representative Name", "Sector ID"};
+  string[] modalKeys = {"Name", "Nit", "Address", "Description", "Logo", "Phone", "LegalRepresentative", "SectorId"};
+}
+
+<h1>Create company</h1>
+<form asp-action="Post" method="post">
+  @* It looks like its not possible to use a for for creating post inputs *@
+  @* <div class="mb-3">
+    @for (var item = 0; item < modalKeys.Length; item++) 
+    {
+      <div class="form-group">
+        <label for="">@createInfo[item]:</label>
+        <input asp-for="@modalKeys[item]" class="form-control">
+      </div>
+    }
+  </div> *@
+
+  <div class="mb-3">
+    <div class="form-group">
+        <label for="">Name:</label>
+        <input asp-for="Name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Nit:</label>
+        <input asp-for="Nit" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Address:</label>
+        <input asp-for="Address" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Description:</label>
+        <input asp-for="Description" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Logo:</label>
+        <input asp-for="Logo" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Phone:</label>
+        <input asp-for="Phone" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="">Legal Representative:</label>
+        <input asp-for="LegalRepresentative" class="form-control">
+    </div>
+  
+    <div class="form-group">
+        <label for="">Sector</label>
+        <input asp-for="SectorId" class="form-control">
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
