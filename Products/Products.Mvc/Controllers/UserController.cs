@@ -35,7 +35,7 @@ namespace Products.Mvc.Controllers
 
     public async Task<IActionResult> Delete (int userId)
     {
-      var data = await _context.Users.FirstAsync(m => m.Id == userId);
+      var data = await _context.Users.FirstAsync(register => register.Id == userId);
       Console.WriteLine(data);
       _context.Users.Remove(data);
       _context.SaveChanges();
