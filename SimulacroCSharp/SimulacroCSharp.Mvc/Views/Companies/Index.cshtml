@@ -16,12 +16,17 @@
     @foreach (var Company in Model)
     {
       <tr>
-        <td>@Company.Logo</td>
+        <td><img src="@Company.Logo" alt="logo" srcset="" class="img-fluit w-25"></td>
         <td>@Company.Id</td>
         <td>@Company.Name</td>
         <td>@Company.Phone</td>
         <td>@Company.Nit</td>
         <td>@Company.LegalRepresentative</td>
+        <td class="d-flex">
+          <a asp-action="Detail" asp-route-id="@Company.Id" class="btn btn-secondary">Details</a>
+          <a asp-action="" asp-route-id="@Company.Id" class="btn btn-primary">Update</a>
+          <a asp-action="Delete" asp-route-id="@Company.Id" class="btn btn-danger">Delete</a>
+        </td>
       </tr>
     }
   </tbody>
