@@ -37,6 +37,20 @@ namespace SimulacroCSharp.Mvc.Controllers
       _context.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public async Task<IActionResult> Update (int Id)
+    {
+      return View(await _context.Companies.FirstOrDefaultAsync(register => register.Id == Id));
+    }
+
+    [HttpPost]
+    public IActionResult Update (Company c)
+    {
+      _context.Companies.Update(c);
+      _context.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     // Delete
     public async Task<IActionResult> Delete (int Id)
     {
