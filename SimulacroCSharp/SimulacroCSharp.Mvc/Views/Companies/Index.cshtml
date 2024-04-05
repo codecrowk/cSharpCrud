@@ -1,0 +1,28 @@
+@{
+  string[] tableHeaders = {"Logo", "ID" , "Name", "Phone", "NIT", "Representative"};
+}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      @foreach (var header in tableHeaders)
+      {
+        <th scope="col">@header</th>
+      }
+    </tr>
+  </thead>
+
+  <tbody>
+    @foreach (var Company in Model)
+    {
+      <tr>
+        <td>@Company.Logo</td>
+        <td>@Company.Id</td>
+        <td>@Company.Name</td>
+        <td>@Company.Phone</td>
+        <td>@Company.Nit</td>
+        <td>@Company.LegalRepresentative</td>
+      </tr>
+    }
+  </tbody>
+</table>
