@@ -24,5 +24,23 @@ namespace Products.Mvc.Controllers
 
       return View(await _context.Users.ToListAsync());
     }
+
+    public async Task<IActionResult> Detail (int userId)
+    {
+      // Use FirstOrDefaultAsync is async, intead FirstOrDefault is sincronic
+      var data = await _context.Users.FirstOrDefaultAsync(m => m.Id == userId);
+      Console.WriteLine(data);
+      return View(await _context.Users.FirstOrDefaultAsync(m => m.Id == userId));
+    }
+
+    public async Task<IActionResult> Delete (int userId)
+    {
+      var data = await _context.Users.FirstAsync(m => m.Id == userId);
+      Console.WriteLine(data);
+      _context.Users.Remove(data);
+      _context.SaveChanges();
+      // Calls Index method
+      return RedirectToAction("Index");
+    }
   }
 }
