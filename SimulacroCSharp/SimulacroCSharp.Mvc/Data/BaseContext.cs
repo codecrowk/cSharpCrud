@@ -10,5 +10,6 @@ namespace SimulacroCSharp.Mvc.Data
 
     // Reference model and database entity
     public DbSet<Company> Companies {get; set;}
+    public DbSet<Sector> Sectors {get; set;}
   }
 }
