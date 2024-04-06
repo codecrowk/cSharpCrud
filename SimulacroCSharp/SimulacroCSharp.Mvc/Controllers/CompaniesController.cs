@@ -59,5 +59,18 @@ namespace SimulacroCSharp.Mvc.Controllers
       _context.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    // Search
+    public IActionResult Search (string searchString)
+    {
+      var company = _context.Companies.AsQueryable();
+      // var users = from user in _context.Companies select user;
+      if (!string.IsNullOrEmpty(searchString))
+      {
+        company = company.Where(c => c.Name.Contains(searchString));
+      }
+
+      return View("Search", company.ToList());
+    }
   }
 }
