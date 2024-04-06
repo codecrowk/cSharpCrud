@@ -1,5 +1,5 @@
 @{
-  string[] tableHeaders = {"Logo", "ID" , "Name", "Phone", "NIT", "Representative"};
+  string[] tableHeaders = {"ID", "Name", "Description", "Author", "Options"};
 }
 
 <h2>Search result</h2>
@@ -15,21 +15,20 @@
   </thead>
 
   <tbody>
-    @foreach (var Company in Model)
+    @foreach (var Sector in Model)
     {
       <tr>
-        <td><img src="@Company.Logo" alt="logo" srcset="" class="img-fluit w-25"></td>
-        <td>@Company.Id</td>
-        <td>@Company.Name</td>
-        <td>@Company.Phone</td>
-        <td>@Company.Nit</td>
-        <td>@Company.LegalRepresentative</td>
+        <td>@Sector.Id</td>
+        <td>@Sector.Name</td>
+        <td>@Sector.Description</td>
+        <td>@Sector.Author</td>
         <td class="d-flex">
-          <a asp-action="Detail" asp-route-id="@Company.Id" class="btn btn-secondary">Details</a>
-          <a asp-action="Update" asp-route-id="@Company.Id" class="btn btn-primary">Update</a>
-          <a asp-action="Delete" asp-route-id="@Company.Id" class="btn btn-danger">Delete</a>
+          <a asp-action="Detail" asp-route-id="@Sector.Id" class="btn btn-secondary">Details</a>
+          <a asp-action="Update" asp-route-id="@Sector.Id" class="btn btn-primary">Update</a>
+          <a asp-action="Delete" asp-route-id="@Sector.Id" class="btn btn-danger">Delete</a>
         </td>
       </tr>
     }
   </tbody>
+</table>
 </table>

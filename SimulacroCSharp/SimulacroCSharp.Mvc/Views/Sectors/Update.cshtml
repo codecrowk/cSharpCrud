@@ -1,5 +1,5 @@
 @* You cannot obviate model reference *@
-@model Company
+@model Sector
 
 <h1>Update company</h1>
 <form asp-action="Update" asp-route-id="@Model.Id" method="post">
@@ -7,17 +7,7 @@
   <div class="mb-3">
     <div class="form-group">
         <label for="">Name:</label>
-        <input asp-for="Name" class="form-control" value="@Model.Id">
-    </div>
-
-    <div class="form-group">
-        <label for="">Nit:</label>
-        <input asp-for="Nit" class="form-control" value="@Model.Nit">
-    </div>
-
-    <div class="form-group">
-        <label for="">Address:</label>
-        <input asp-for="Address" class="form-control" value="@Model.Address">
+        <input asp-for="Name" class="form-control" value="@Model.Name">
     </div>
 
     <div class="form-group">
@@ -26,25 +16,9 @@
     </div>
 
     <div class="form-group">
-        <label for="">Logo:</label>
-        <input asp-for="Logo" class="form-control" value="@Model.Logo">
-    </div>
-
-    <div class="form-group">
-        <label for="">Phone:</label>
-        <input asp-for="Phone" class="form-control" value="@Model.Phone">
-    </div>
-
-    <div class="form-group">
-        <label for="">Legal Representative:</label>
-        <input asp-for="LegalRepresentative" class="form-control" value="@Model.LegalRepresentative">
-    </div>
-  
-    <div class="form-group">
-        <label for="">Sector</label>
-        <input asp-for="SectorId" class="form-control" value="@Model.SectorId">
+        <label for="">Author:</label>
+        <input asp-for="Author" class="form-control" value="@Model.Author">
     </div>
   </div>
-
   <button type="submit" class="btn btn-primary">Update</button>
 </form>

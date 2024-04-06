@@ -33,14 +33,14 @@ namespace SimulacroCSharp.Mvc.Controllers
     [HttpPost]
     public IActionResult Create (Sector s)
     {
-      _context.Companies.Add(s);
+      _context.Sectors.Add(s);
       _context.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public async Task<IActionResult> Update (int Id)
     {
-      return View(await _context.Companies.FirstOrDefaultAsync(register => register.Id == Id));
+      return View(await _context.Sectors.FirstOrDefaultAsync(register => register.Id == Id));
     }
 
     [HttpPost]
