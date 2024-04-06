@@ -1,17 +1,8 @@
 @{
   string[] tableHeaders = {"Logo", "ID" , "Name", "Phone", "NIT", "Representative"};
 }
-<h2 class="mb-3 text-center">Index Company</h2>
-<div class="mb-4">
-  <a asp-action="Create" class="btn btn-primary btn-lg">Create company</a>
-</div>
 
-<form asp-action="Search">
-  <div class="form-group d-flex">
-    <input type="text" name="searchString" class="form-control w-50">
-    <button type="submit" class="btn btn-primary">Search</button>
-  </div>
-</form>
+<h2>Search result</h2>
 
 <table class="table table-striped">
   <thead>
