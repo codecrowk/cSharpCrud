@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Products.Mvc.Data;
+using Products.Mvc.Helpers;
+using Products.Mvc.Providers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,10 @@ builder.Services.AddDbContext<BaseContext> ( options =>
         Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.20-mysql")
     )
 );
+
+// Service for Helper and Provider
+builder.Services.AddSingleton<HelperUploadFiles>();
+builder.Services.AddSingleton<PathProvider>();
 
 var app = builder.Build();
 
