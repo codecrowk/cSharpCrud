@@ -1,0 +1,38 @@
+@{
+  string[] tableHeaders = {"Logo", "Company name", "Offer", "Description", "Salary", "Actions"};
+}
+
+<h1>Listado de ofertas de empleo</h1>
+
+<div class="row">
+    <div class="col">
+        <a asp-action="Create" class="btn btn-success">Create user</a>
+    </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      @foreach (var header in tableHeaders)
+      {
+        <th scope="col">@header</th>
+      }
+    </tr>
+  </thead>
+
+  @foreach (var job in Model)
+  {
+    <tr>
+      <td><img src="~/images/@job.LogoCompany" alt="@job.LogoCompany"></td>
+      <td>@job.NameCompany</td>
+      <td>@job.OfferTitle</td>
+      <td>@job.Description</td>
+      <td>@job.Salary</td>
+      <td>
+        <a asp-action="Detail" asp-route-id="@job.Id" class="btn btn-secondary">Details</a>
+        <a asp-action="" asp-route-id="@job.Id" class="btn btn-primary">Update</a>
+        <a asp-action="Delete" asp-route-id="@job.Id" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  }
+</table>

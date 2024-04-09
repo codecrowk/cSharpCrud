@@ -15,4 +15,4 @@ CREATE TABLE Jobs (
 )
 
 INSERT INTO Jobs (`NameCompany`, `LogoCompany`, `OfferTitle`, `Description`, `Salary`, `Positions`, `Status`, `Country`, `Languages`) VALUES
-("Kitori SAS", "cats.img", "Senior C#", "Senior for this position net", 23000, 2, "Avalible", "Colombia", "Spanish, English");
+("Kitori SAS", "cats.jpeg", "Senior C#", "Senior for this position net", 23000, 2, "Avalible", "Colombia", "Spanish, English");

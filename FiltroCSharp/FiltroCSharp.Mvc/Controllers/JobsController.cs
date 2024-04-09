@@ -1,5 +1,6 @@
 using FiltroCSharp.Mvc.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FiltroCSharp.Mvc
 {
@@ -11,5 +12,11 @@ namespace FiltroCSharp.Mvc
     {
       _context = context;
     } 
+
+    public async Task<IActionResult> Index ()
+    {
+      // return View();
+      return View(await _context.Jobs.ToListAsync());
+    }
   }
 }
