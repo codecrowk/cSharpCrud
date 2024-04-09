@@ -2,6 +2,12 @@
   string[] tableHeaders = {"ID", "Name", "Lastname", "Email", "Options"};
 }
 
+<div class="row">
+    <div class="col">
+        <a asp-action="Create" class="btn btn-success">Create user</a>
+    </div>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -19,6 +25,7 @@
       <td>@user.Name</td>
       <td>@user.Lastname</td>
       <td>@user.Email</td>
+      <td><img src="~/images/@user.Logo" alt="@user.Logo"></td>
       <td>
         <a asp-action="Detail" asp-route-id="@user.Id" class="btn btn-secondary">Details</a>
         <a asp-action="" asp-route-id="@user.Id" class="btn btn-primary">Update</a>
