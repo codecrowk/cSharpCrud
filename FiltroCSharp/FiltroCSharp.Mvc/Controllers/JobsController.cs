@@ -28,6 +28,11 @@ namespace FiltroCSharp.Mvc
       return View(await _context.Jobs.FirstOrDefaultAsync(r => r.Id == Id));
     }
 
+    public IActionResult Update ()
+    {
+      return View();
+    }
+
     public IActionResult Create ()
     {
       return View();
