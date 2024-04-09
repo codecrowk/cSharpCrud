@@ -1,4 +1,8 @@
 @model Job
+@{
+  ViewData["Title"] = "Job details";
+}
+
 <img src="~/images/@Model.LogoCompany" alt="@Model.LogoCompany" class="w-25">
 <h2>@Model.OfferTitle</h2>
 <p>Salary: @Model.NameCompany</p>

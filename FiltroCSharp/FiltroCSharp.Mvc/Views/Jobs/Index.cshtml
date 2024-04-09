@@ -1,5 +1,6 @@
 @{
   string[] tableHeaders = {"Logo", "Company name", "Offer", "Description", "Salary", "Actions"};
+  ViewData["Title"] = "Job list";
 }
 
 <h1>Listado de ofertas de empleo</h1>
@@ -9,6 +10,11 @@
         <a asp-action="Create" class="btn btn-success">Create user</a>
     </div>
 </div>
+
+<form asp-action="Index" method="get" class="d-flex float-end">
+  <input type="text" name="search" value="" class="form-control" placeholder="Search">
+  <button class="btn btn-success">Search</button>
+</form>
 
 <table class="table table-striped">
   <thead>

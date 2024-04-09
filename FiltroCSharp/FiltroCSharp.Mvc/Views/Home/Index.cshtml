@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Job Search";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4 text-center">Job Search</h1>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="d-flex flex-column w-25">
+        <a class="btn btn-primary btn-lg mb-3" asp-controller="Jobs" asp-action="Index">Job List</a>
+        <a class="btn btn-primary btn-lg mb-3" asp-controller="Jobs" asp-action="Create">Add Job</a>
+        <a class="btn btn-success btn-lg mb-3" asp-controller="Employees" asp-action="Index">Employ List</a>
+        <a class="btn btn-success btn-lg mb-3" asp-controller="Employees" asp-action="Create">Register Employ</a>
+    </div>
+</div>
