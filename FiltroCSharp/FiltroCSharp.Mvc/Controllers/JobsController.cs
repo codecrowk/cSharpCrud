@@ -23,6 +23,11 @@ namespace FiltroCSharp.Mvc
       return View(await _context.Jobs.ToListAsync());
     }
 
+    public async Task<IActionResult> Detail (int Id)
+    {
+      return View(await _context.Jobs.FirstOrDefaultAsync(r => r.Id == Id));
+    }
+
     public IActionResult Create ()
     {
       return View();
@@ -38,6 +43,14 @@ namespace FiltroCSharp.Mvc
 
       _context.Jobs.Add(job);
       await _context.SaveChangesAsync();
+      return RedirectToAction("Index");
+    }
+
+    public async Task<IActionResult> Delete (int Id)
+    {
+      var job = await _context.Jobs.FindAsync(Id);
+      _context.Jobs.Remove(job);
+      _context.SaveChanges();
       return RedirectToAction("Index");
     }
   }
