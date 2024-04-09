@@ -1,6 +1,6 @@
 namespace FiltroCSharp.Mvc.Models
 {
-  public class JobsController
+  public class Job
   {
     public int Id {get; set;}
     public string? NameCompany {get; set;}
