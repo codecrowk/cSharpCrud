@@ -1,13 +1,13 @@
 @{
-  string[] tableHeaders = {"Logo", "Company name", "Offer", "Description", "Salary", "Actions"};
-  ViewData["Title"] = "Job list";
+  string[] tableHeaders = {"Photo", "Names", "Lastnames", "Email", "About", "Actions"};
+  ViewData["Title"] = "Employ list";
 }
 
-<h1>List of Job oportunities</h1>
+<h1>List of Employees</h1>
 
 <div class="row">
     <div class="col">
-        <a asp-action="Create" class="btn btn-success">Create Job</a>
+        <a asp-action="Create" class="btn btn-success">Add employ</a>
     </div>
 </div>
 
@@ -29,11 +29,11 @@
   @foreach (var job in Model)
   {
     <tr>
-      <td><img src="~/images/@job.LogoCompany" alt="@job.LogoCompany"></td>
-      <td>@job.NameCompany</td>
-      <td>@job.OfferTitle</td>
-      <td>@job.Description</td>
-      <td>@job.Salary</td>
+      <td><img src="~/images/@job.ProfilePicture" alt="@job.ProfilePicture" style="width: 150px;"></td>
+      <td>@job.Names</td>
+      <td>@job.LastNames</td>
+      <td>@job.Email</td>
+      <td>@job.About</td>
       <td>
         <a asp-action="Detail" asp-route-id="@job.Id" class="btn btn-secondary">Details</a>
         <a asp-action="Update" asp-route-id="@job.Id" class="btn btn-primary">Update</a>

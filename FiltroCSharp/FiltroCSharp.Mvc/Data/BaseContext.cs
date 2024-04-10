@@ -9,5 +9,6 @@ namespace FiltroCSharp.Mvc.Data
    { }
 
    public DbSet<Job> Jobs {get; set;}
+   public DbSet<Employ> Employees {get; set;}
   }
 }
