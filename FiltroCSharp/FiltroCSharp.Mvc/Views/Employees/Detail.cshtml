@@ -1,0 +1,16 @@
+@model Job
+@{
+  ViewData["Title"] = "Job details";
+}
+
+<img src="~/images/@Model.LogoCompany" alt="@Model.LogoCompany" class="w-25">
+<h2>@Model.OfferTitle</h2>
+<p>Salary: @Model.NameCompany</p>
+<p>Places: @Model.Salary</p>
+<p>Country: @Model.Positions</p>
+<p>Languages: @Model.Languages</p>
+
+<b class="fs-4">Description</b>
+<p>@Model.Description</p>
+
+<a asp-action="Index" class="btn btn-primary">Go back</a>

@@ -69,24 +69,30 @@ namespace FiltroCSharp.Mvc
     //   return RedirectToAction("Index");
     // }
 
-    // //----- CREATE ----- //
-    // public IActionResult Create ()
-    // {
-    //   return View();
-    // }
+    //----- CREATE ----- //
+    public IActionResult Create ()
+    {
+      return View();
+    }
 
-    // [HttpPost]
-    // public async Task<IActionResult> Create (Job job, IFormFile file)
-    // {
-    //   string fileName = file.FileName;
+    // file = cv.pdf
+    // image = profile.img
+    [HttpPost]
+    public async Task<IActionResult> Create (Employ employ, IFormFile image, IFormFile file,DateOnly date)
+    {
+      string imageName = image.FileName;
+      string fileName = file.FileName;
 
-    //   await this._helperUploadFiles.UploadFilesAsync(file, fileName, Folders.Images);
+      await this._helperUploadFiles.UploadFilesAsync(image, imageName, Folders.Images);
+      await this._helperUploadFiles.UploadFilesAsync(file, fileName, Folders.Documents);
 
-    //   job.LogoCompany = fileName;
-    //   _context.Jobs.Add(job);
-    //   await _context.SaveChangesAsync();
-    //   return RedirectToAction("Index");
-    // }
+      employ.BirthDate = date;
+      employ.Cv = fileName;
+      employ.ProfilePicture = imageName;
+      _context.Employees.Add(employ);
+      await _context.SaveChangesAsync();
+      return RedirectToAction("Index");
+    }
 
     // public async Task<IActionResult> Delete (int Id)
     // {

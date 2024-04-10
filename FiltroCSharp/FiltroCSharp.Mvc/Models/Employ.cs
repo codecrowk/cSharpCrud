@@ -1,3 +1,6 @@
+using System.Runtime.Serialization;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 namespace FiltroCSharp.Mvc.Models
 {
   public class Employ
@@ -10,7 +13,7 @@ namespace FiltroCSharp.Mvc.Models
   public string? Cv {get; set;} 
   public string? Gender {get; set;} 
   public string? Phone {get; set;} 
-  public DateTime? BirthDate {get; set;} 
+  public DateOnly ? BirthDate {get; set;} 
   public string? Address {get; set;} 
   public string? CivilStatus {get; set;} 
   public double? Salary {get; set;} 
