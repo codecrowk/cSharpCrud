@@ -94,12 +94,12 @@ namespace FiltroCSharp.Mvc
       return RedirectToAction("Index");
     }
 
-    // public async Task<IActionResult> Delete (int Id)
-    // {
-    //   var job = await _context.Jobs.FindAsync(Id);
-    //   _context.Jobs.Remove(job);
-    //   _context.SaveChanges();
-    //   return RedirectToAction("Index");
-    // }
+    public async Task<IActionResult> Delete (int Id)
+    {
+      var employ = await _context.Employees.FindAsync(Id);
+      _context.Employees.Remove(employ);
+      _context.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
