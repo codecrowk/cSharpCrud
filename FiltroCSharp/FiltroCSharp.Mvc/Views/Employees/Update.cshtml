@@ -1,67 +1,112 @@
-@model Job
+@model Employ
 @{
-  ViewData["Title"] = "Update Job";
+  ViewData["Title"] = "Update employ information";
 }
 
 <form asp-action="Update" method="post" enctype="multipart/form-data">
-  <div class="row justify-content-center">
-    <h2 class="text-center my-3">Company Information</h2>
+  <div>
+    <h2 class="text-center my-3">Update Employ information</h2>
 
-    <div class="form-group col-6">
-        <label for="">Company name</label>
-        <input asp-for="NameCompany" class="form-control" value="@Model.NameCompany">
+    <div class="row justify-content-center">
+      <div class="form-group col-4">
+          <label for="">Names</label>
+          <input asp-for="Names" class="form-control" value="@Model.Names">
+      </div>
+
+      <div class="form-group col-4">
+        <label for="">Lastnames</label>
+        <input asp-for="LastNames" class="form-control" value="@Model.LastNames">
+      </div>
+
+      <div class="form-group col-4">
+        <label for="">Email</label>
+        <input asp-for="Email" class="form-control" value="@Model.Email">
+      </div>
     </div>
 
-    <div class="form-group col-6">
-        <label asp-for="LogoCompany">Company Logo</label>
-        <input type="file" name="file" class="form-control">
+    <div class="row justify-content-center">
+      <div class="form-group col-4">
+        <label for="">BirthDay</label>
+        <input type="date" name="date" class="form-control" value="@Model.BirthDate">
+        @* <input asp-for="BirthDate" class="form-control"> *@
+      </div>
+
+      <div class="form-group col-4">
+        <label for="">Gender</label>
+        <select asp-for="Gender" id="" class="form-select form-control">
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+        </select>
+      </div>
+
+      <div class="form-group col-4">
+        <label for="">Phone number</label>
+        <input asp-for="Phone" class="form-control" value="@Model.Phone">
+      </div>
     </div>
-  </div>
 
-  <div class="row justify-content-center">
-    <h2 class="text-center my-3">Offer information</h2>
+    <div class="row justify-content-center">
+      <div class="form-group col-4">
+        <label for="">Address</label>
+        <input asp-for="Address" class="form-control" value="@Model.Address">
+      </div>
 
-    <div class="form-group col-6">
-        <label for="">Offer title</label>
-        <input asp-for="OfferTitle" class="form-control" value="@Model.OfferTitle">
-    </div>
+      <div class="form-group col-4">
+        <label for="">Marital Status</label>
+        <select asp-for="CivilStatus" id="" class="form-select form-control">
+          <option value="married">Married</option>
+          <option value="single">Single</option>
+          <option value="separated">Separated</option>
+          <option value="divorced">Divorced</option>
+          <option value="windowed">Windowed</option>
+          <option value="not_married">Not Married</option>
+        </select>
+      </div>
 
-    <div class="form-group col-6">
-        <label asp-for="LogoCompany">Country</label>
-        <input asp-for="Country" class="form-control" value="@Model.Country">
-    </div>
-
-    <div class="form-group col-6">
-        <label for="">Salary</label>
+      <div class="form-group col-4">
+        <label for="">Dream salary</label>
         <input asp-for="Salary" class="form-control" value="@Model.Salary">
+      </div>
     </div>
 
-    <div class="form-group col-6">
-        <label for="">Open places</label>
-        <input asp-for="Positions" class="form-control" value="@Model.Positions">
-    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-4">
+        <label for="">Academic Title</label>
+        <input asp-for="AcademicTitle" class="form-control" value="@Model.AcademicTitle">
+      </div>
 
-    <div class="form-group col-6">
+      <div class="form-group col-4">
+        <label for="">Area</label>
+        <input asp-for="Area" class="form-control" value="@Model.Area">
+      </div>
+
+      <div class="form-group col-4">
         <label for="">Languages</label>
         <input asp-for="Languages" class="form-control" value="@Model.Languages">
+      </div>
     </div>
 
-    <div class="form-group col-6">
-        <label for="">Offer status</label>
-        <select asp-for="Status" id="" class="form-select form-control">
-          <option value="active">Active</option>
-          <option value="unused">Unused</option>
-          <option value="closed">Closed</option>
-        </select>
+    <div class="row justify-content-center">
+      <div class="form-group col-10">
+          <label asp-for="About">About you</label>
+          <textarea asp-for="About" value="@Model.About" class="form-control" placeholder="Tell more about yourself" style="height: 180px;"></textarea>
+      </div>
     </div>
 
-    <div class="form-group col-10">
-        <label asp-for="LogoCompany">Description</label>
-        <textarea asp-for="Description" value="@Model.Description" class="form-control" placeholder="Leave a comment here" style="height: 180px;"></textarea>
+    <div class="row justify-content-center">
+      <div class="form-group col-6">
+          <label asp-for="ProfilePicture">Photo</label>
+          <input type="file" name="image" class="form-control">
+      </div>
+
+      <div class="form-group col-6">
+          <label asp-for="Cv">CV file</label>
+          <input type="file" name="file" class="form-control">
+      </div>
     </div>
   </div>
 
   <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary btn-lg my-4">Update job offer</button>
+    <button type="submit" class="btn btn-primary btn-lg my-4">Update employ information</button>
   </div>
 </form>

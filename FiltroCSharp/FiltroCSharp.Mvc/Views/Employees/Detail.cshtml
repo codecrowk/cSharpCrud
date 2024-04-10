@@ -1,16 +1,62 @@
-@model Job
+@model Employ
 @{
   ViewData["Title"] = "Job details";
 }
 
-<img src="~/images/@Model.LogoCompany" alt="@Model.LogoCompany" class="w-25">
-<h2>@Model.OfferTitle</h2>
-<p>Salary: @Model.NameCompany</p>
-<p>Places: @Model.Salary</p>
-<p>Country: @Model.Positions</p>
-<p>Languages: @Model.Languages</p>
+<div class="d-flex flex-column justify-content-center text-center">
+  <div>
+    <img src="~/images/@Model.ProfilePicture" alt="@Model.ProfilePicture" class="w-25"> 
+  </div>
+  <h3>@Model.Names @Model.LastNames</h3>
+  <p>@Model.Email</p>
+</div>
 
-<b class="fs-4">Description</b>
-<p>@Model.Description</p>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <p>Phone number: @Model.Phone</p>
+  </div>
 
-<a asp-action="Index" class="btn btn-primary">Go back</a>
+  <div class="col-4">
+    <p>Address: @Model.Address</p>
+  </div>
+
+  <div class="col-4">
+    <p>BirthDay: @Model.BirthDate</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-4">
+    <p>Gender: @Model.Gender</p>
+  </div>
+
+  <div class="col-4">
+    <p>Marital Status: @Model.CivilStatus</p>
+  </div>
+
+  <div class="col-4">
+    <p>Dream salary: @Model.Salary</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-4">
+    <p>Academic title: @Model.AcademicTitle</p>
+  </div>
+
+  <div class="col-4">
+    <p>Languages: @Model.Languages</p>
+  </div>
+
+  <div class="col-4">
+    <p>Area: @Model.Area</p>
+  </div>
+</div>
+
+<div>
+  <b class="fs-3">About</b>
+  <p>@Model.About</p>
+</div>
+
+  <a href="~/documents/@Model.Cv" download="@Model.Cv" class="btn btn-primary">Download CV</a>
+  <a href="~/images/@Model.ProfilePicture" download="@Model.Cv" class="btn btn-success">Download Image</a>

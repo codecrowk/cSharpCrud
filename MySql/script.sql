@@ -18,6 +18,8 @@ INSERT INTO Jobs (`NameCompany`, `LogoCompany`, `OfferTitle`, `Description`, `Sa
 ("Kitori SAS", "cats.jpeg", "Senior C#", "Senior for this position net", 23000, 2, "Avalible", "Colombia", "Spanish, English");
 
 -- Table for employees
+SELECT * FROM `Employees`;
+
 DROP TABLE Employees;
 
 CREATE TABLE Employees (

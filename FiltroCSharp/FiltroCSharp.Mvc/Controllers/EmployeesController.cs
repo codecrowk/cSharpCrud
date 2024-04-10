@@ -37,37 +37,40 @@ namespace FiltroCSharp.Mvc
             result.AcademicTitle.Contains(search) ||
             result.Languages.Contains(search) ||
             result.Area.Contains(search) ||
-
-            result.Salary.ToString().Contains(search) ||
-            result.BirthDate.ToString().Contains(search)
+            result.Salary.ToString().Contains(search)
           );
       }
       return View(await employSearch.OrderByDescending(j => j.Salary).ToListAsync());
     }
 
 
-    // public async Task<IActionResult> Detail (int Id)
-    // {
-    //   return View(await _context.Jobs.FirstOrDefaultAsync(r => r.Id == Id));
-    // }
+    public async Task<IActionResult> Detail (int Id)
+    {
+      return View(await _context.Employees.FirstOrDefaultAsync(r => r.Id == Id));
+    }
 
-    // //----- UPDATE ----- //
-    // public async Task<IActionResult> Update (int Id)
-    // {
-    //   return View(await _context.Jobs.FirstOrDefaultAsync(r => r.Id == Id));
-    // }
+    //----- UPDATE ----- //
+    public async Task<IActionResult> Update (int Id)
+    {
+      return View(await _context.Employees.FirstOrDefaultAsync(r => r.Id == Id));
+    }
 
-    // [HttpPost]
-    // public async Task<IActionResult> Update (Job job, IFormFile file)
-    // {
-    //   string fileName = file.FileName;
-    //   await this._helperUploadFiles.UploadFilesAsync(file, fileName, Folders.Images);
+    [HttpPost]
+    public async Task<IActionResult> Update (Employ employ, IFormFile image, IFormFile file, DateOnly date)
+    {
+      string imageName = image.FileName;
+      string fileName = file.FileName;
 
-    //   job.LogoCompany = fileName;
-    //   _context.Jobs.Update(job);
-    //   await _context.SaveChangesAsync();
-    //   return RedirectToAction("Index");
-    // }
+      await this._helperUploadFiles.UploadFilesAsync(image, imageName, Folders.Images);
+      await this._helperUploadFiles.UploadFilesAsync(file, fileName, Folders.Documents);
+
+      employ.BirthDate = date;
+      employ.Cv = fileName;
+      employ.ProfilePicture = imageName;
+      _context.Employees.Update(employ);
+      await _context.SaveChangesAsync();
+      return RedirectToAction("Index");
+    }
 
     //----- CREATE ----- //
     public IActionResult Create ()
